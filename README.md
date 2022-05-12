@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Prettier, ESLint, & the Airbnb Style Guide in VS Code
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-  #### Install npm
+How to install npm isn't really in the scope of this article. See instructions on [github.com/npm/cli](http://github.com/npm/cli "github.com/npm/cli") for how to install it for your specific OS.
 
-## Available Scripts
+- #### Install npx globally
+npx is a tool intended to make it really easy to use CLI tools and other executables hosted on the npm registry.
 
-In the project directory, you can run:
+`npm install -g npx`
 
-### `npm start`
+-  ####  Install ESLint and Prettier
+`yarn add -D prettier`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-  #### install  babel/eslint-parser
+`npm install eslint @babel/core @babel/eslint-parser --save-dev `
+or
+`rn add eslint @babel/core @babel/eslint-parser -D`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-  #### Install the Airbnb style config for ESLint, and all dependencies
+`npx install-peerdeps --dev eslint-config-airbnb`
 
-### `npm test`
+The npx utility automatically detects if you are using yarn or npm to manage your codebase, and runs the appropriate commands. If you do not have npx, you will need to manually install the eslint-config-airbnb-base package and all peer dependencies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-  ####  Set up ESLint and Prettier configuration
+For this, your project needs .eslintrc . This is the most basic configuration you can provide:
 
-### `npm run build`
+```json
+{
+	"extends": [
+		"airbnb",
+		"airbnb/hooks",
+		"eslint:recommended",
+		"prettier",
+		"plugin:jsx-a11y/recommended"
+	],
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"babelOptions": {
+			"presets": ["@babel/preset-react"]
+		},
+		"ecmaVersion": 8,
+		"requireConfigFile": false
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"jest": true
+	},
+	"rules": {
+		"react/react-in-jsx-scope": 0,
+		"react-hooks/rules-of-hooks": "error",
+		"no-console": 0,
+		"react/state-in-constructor": 0,
+		"indent": 0,
+		"linebreak-style": 0,
+		"react/prop-types": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".jsx"]
+			}
+		],
+		"prettier/prettier": [
+			"error",
+			{
+				"trailingComma": "es5",
+				"singleQuote": true,
+				"printWidth": 100,
+				"tabWidth": 4,
+				"semi": true,
+				"endOfLine": "auto"
+			}
+		]
+	},
+	"plugins": ["prettier", "react", "react-hooks"]
+}
+```
+-  #### Set up VS Code to format your code automatically on save
+```json
+{
+	// Theme
+	"workbench.colorTheme": "Andromeda",
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	// config related to code formatting
+	"editor.fontSize": 15,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"[javascript]": {
+		"editor.formatOnSave": false,
+		"editor.defaultFormatter": null
+	},
+	"[javascriptreact]": {
+		"editor.formatOnSave": false,
+		"editor.defaultFormatter": null
+	},
+	"javascript.validate.enable": false, //disable all built-in syntax checking
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.fixAll.tslint": true,
+		"source.organizeImports": true
+	},
+	"eslint.alwaysShowStatus": true,
+	// emmet
+	"emmet.triggerExpansionOnTab": true,
+	"emmet.includeLanguages": {
+		"javascript": "javascriptreact"
+	}
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Restart VS Code and watch the magic happen!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
