@@ -14,7 +14,7 @@ npx is a tool intended to make it really easy to use CLI tools and other executa
 -  #### install  babel/eslint-parser
 `npm install eslint @babel/core @babel/eslint-parser --save-dev `
 or
-`rn add eslint @babel/core @babel/eslint-parser -D`
+`yarn add eslint @babel/core @babel/eslint-parser -D`
 
 -  #### Install the Airbnb style config for ESLint, and all dependencies
 `npx install-peerdeps --dev eslint-config-airbnb`
