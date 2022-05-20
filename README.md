@@ -1,28 +1,31 @@
 # Prettier, ESLint, & the Airbnb Style Guide in VS Code
 
--  #### Install npm
-How to install npm isn't really in the scope of this article. See instructions on [github.com/npm/cli](http://github.com/npm/cli "github.com/npm/cli") for how to install it for your specific OS.
+- #### Install npm
+
+  How to install npm isn't really in the scope of this article. See instructions on [github.com/npm/cli](http://github.com/npm/cli 'github.com/npm/cli') for how to install it for your specific OS.
 
 - #### Install npx globally
-npx is a tool intended to make it really easy to use CLI tools and other executables hosted on the npm registry.
+  npx is a tool intended to make it really easy to use CLI tools and other executables hosted on the npm registry.
 
 `npm install -g npx`
 
--  ####  Install ESLint and Prettier
-`yarn add -D prettier`
+- #### Install ESLint and Prettier
 
--  #### install  babel/eslint-parser
-`npm install eslint @babel/core @babel/eslint-parser --save-dev `
-or
-`yarn add eslint @babel/core @babel/eslint-parser -D`
+  `yarn add -D prettier`
 
--  #### Install the Airbnb style config for ESLint, and all dependencies
-`npx install-peerdeps --dev eslint-config-airbnb`
+- #### install babel/eslint-parser
+
+  `npm install eslint @babel/core @babel/eslint-parser --save-dev `
+  or
+  `yarn add eslint @babel/core @babel/eslint-parser -D`
+
+- #### Install the Airbnb style config for ESLint, and all dependencies
+  `npx install-peerdeps --dev eslint-config-airbnb`
 
 The npx utility automatically detects if you are using yarn or npm to manage your codebase, and runs the appropriate commands. If you do not have npx, you will need to manually install the eslint-config-airbnb-base package and all peer dependencies.
 
--  ####  Set up ESLint and Prettier configuration
-For this, your project needs .eslintrc . This is the most basic configuration you can provide:
+- #### Set up ESLint and Prettier configuration
+  For this, your project needs .eslintrc . This is the most basic configuration you can provide:
 
 ```json
 {
@@ -77,7 +80,9 @@ For this, your project needs .eslintrc . This is the most basic configuration yo
 	"plugins": ["prettier", "react", "react-hooks"]
 }
 ```
--  #### Set up VS Code to format your code automatically on save
+
+- #### Set up VS Code to format your code automatically on save
+
 ```json
 {
 	// Theme
@@ -111,4 +116,3 @@ For this, your project needs .eslintrc . This is the most basic configuration yo
 ```
 
 Restart VS Code and watch the magic happen!
-
